@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using NetCoreApiVersioning.Domain;
 using NetCoreApiVersioning.Services;
 using Microsoft.OpenApi.Models;
+
 
 namespace NetCoreApiVersioning
 {
@@ -22,7 +24,7 @@ namespace NetCoreApiVersioning
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<IWidgetService, WidgetService>();
 
@@ -30,12 +32,12 @@ namespace NetCoreApiVersioning
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Widget API", Version = "v1" });
             });
-
+            services.AddControllers();
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseSwagger();
             app.UseSwaggerUI(c =>
@@ -48,13 +50,17 @@ namespace NetCoreApiVersioning
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseHsts();
-            }
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+
+            app.UseRouting();
+
+            // app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
 
         }
     }

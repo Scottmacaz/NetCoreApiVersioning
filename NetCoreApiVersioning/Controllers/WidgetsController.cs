@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace NetCoreApiVersioning.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class WidgetsController : ControllerBase
     {

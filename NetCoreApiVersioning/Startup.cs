@@ -45,8 +45,9 @@ namespace NetCoreApiVersioning
                 //o.AssumeDefaultVersionWhenUnspecified = true;  
                 //Sets default version count.
                 //o.DefaultApiVersion = new ApiVersion(1, 0);
-                o.Conventions.Controller<WidgetsController>().HasApiVersion(new ApiVersion(1, 0));
-                o.Conventions.Controller<WidgetsController>().HasApiVersion(new ApiVersion(2, 0));
+                //Don't use these, AddVersionsApiExplorer does this ....
+                //o.Conventions.Controller<WidgetsController>().HasApiVersion(new ApiVersion(1, 0));
+                //o.Conventions.Controller<WidgetsController>().HasApiVersion(new ApiVersion(2, 0));
             });
 
             services.AddVersionedApiExplorer(

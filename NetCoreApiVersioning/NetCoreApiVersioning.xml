@@ -34,6 +34,96 @@
             <param name="operation">The operation to apply the filter to.</param>
             <param name="context">The current operation filter context.</param>
         </member>
+        <member name="T:NetCoreApiVersioning.Controllers.WidgetsController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:NetCoreApiVersioning.Controllers.WidgetsController.#ctor(NetCoreApiVersioning.Domain.IWidgetService,AutoMapper.IMapper)">
+            <summary>
+            
+            </summary>
+            <param name="widgetService"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:NetCoreApiVersioning.Controllers.WidgetsController.Get">
+            <summary>
+            Gets all widgets blah blah blah 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetCoreApiVersioning.Controllers.WidgetsController.Get(System.Int32)">
+            <summary>
+            Gets a specific widget blah blah blah ...
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCoreApiVersioning.Controllers.WidgetsController.Post(NetCoreApiVersioning.Dto.Widgets.WidgetPostDto)">
+            <summary>
+            Creates a new widget
+            </summary>
+            <param name="widgetPostDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCoreApiVersioning.Controllers.WidgetsController.Put(System.Int32,System.String)">
+            <summary>
+            Replaces an existing widget
+            </summary>
+            <param name="id"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:NetCoreApiVersioning.Controllers.WidgetsController.Delete(System.Int32)">
+            <summary>
+            Deletes a widget
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="T:NetCoreApiVersioning.Controllers.V3.WidgetsControllerV3">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:NetCoreApiVersioning.Controllers.V3.WidgetsControllerV3.#ctor(NetCoreApiVersioning.Domain.IWidgetService,AutoMapper.IMapper)">
+            <summary>
+            
+            </summary>
+            <param name="widgetService"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:NetCoreApiVersioning.Controllers.V3.WidgetsControllerV3.Get">
+            <summary>
+            Gets all widgets blah blah blah 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NetCoreApiVersioning.Controllers.V3.WidgetsControllerV3.Get(System.Int32)">
+            <summary>
+            Gets a specific widget blah blah blah ...
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCoreApiVersioning.Controllers.V3.WidgetsControllerV3.Post(NetCoreApiVersioning.Dto.Widgets.WidgetPostDtoV3)">
+            <summary>
+            Creates a new widget
+            </summary>
+            <param name="widgetPostDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCoreApiVersioning.Controllers.V3.WidgetsControllerV3.Put(System.Int32,System.String)">
+            <summary>
+            Replaces an existing widget
+            </summary>
+            <param name="id"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:NetCoreApiVersioning.Controllers.V3.WidgetsControllerV3.Delete(System.Int32)">
+            <summary>
+            Deletes a widget
+            </summary>
+            <param name="id"></param>
+        </member>
         <member name="T:NetCoreApiVersioning.Domain.WidgetAutoMapperProfile">
             <summary>
             Any class that inherits from profile will be seen by automapper and the mappings will be loaded at startup.

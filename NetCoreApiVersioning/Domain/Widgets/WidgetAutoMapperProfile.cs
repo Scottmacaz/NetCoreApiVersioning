@@ -1,10 +1,5 @@
 ﻿using AutoMapper;
-using NetCoreApiVersioning.Domain;
-using NetCoreApiVersioning.Dto;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using NetCoreApiVersioning.Dto.Widgets;
 
 namespace NetCoreApiVersioning.Domain
 {
@@ -15,7 +10,8 @@ namespace NetCoreApiVersioning.Domain
     {
         public WidgetAutoMapperProfile()
         {
-            CreateMap<Widget, WidgetGetDto>();
+            CreateMap<Widget, WidgetGetDto>().ForMember(dest => dest.WidgetName, opt => opt.MapFrom(src => src.Name));
+            CreateMap<Widget, WidgetGetDtoV3>();
         }
     }
 }

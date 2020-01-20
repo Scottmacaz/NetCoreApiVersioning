@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NetCoreApiVersioning.Dto
+namespace NetCoreApiVersioning.Dto.Widgets
 {
     public class WidgetPostDto
     {

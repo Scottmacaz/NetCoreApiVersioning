@@ -8,13 +8,13 @@ namespace NetCoreApiVersioning.Domain
 {
     public class Widget
     {
-        public string WidgetName { get; }
+        public string Name { get; }
         public int Id { get; }
         public decimal Price { get; private set; }
 
         public Widget(string widgetName, int id, decimal price)
         {
-            WidgetName = widgetName;
+            Name = widgetName;
             Id = id;
             Price = price;
         }

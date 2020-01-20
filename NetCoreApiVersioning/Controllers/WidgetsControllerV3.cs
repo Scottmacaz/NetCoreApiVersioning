@@ -1,26 +1,21 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using NetCoreApiVersioning.Domain;
-using NetCoreApiVersioning.Dto;
 using NetCoreApiVersioning.Dto.Widgets;
 using System.Collections.Generic;
-using System.Linq;
 
-namespace NetCoreApiVersioning.Controllers
+namespace NetCoreApiVersioning.Controllers.V3
 {
-
     /// <summary>
     /// 
     /// </summary>
-    //Multiple ApiVersion attributes can be present to indicate no changes to this controller between versions.
-    //This will be most of our controllers from version to version so I don't think we need version directories
-    //under the controllers directory.  In a real app both versions would be deprecated so that this file could go away.
+    //Updates for v3:
+    // * WidgetName has been updated to Name
     [ApiController]
-    [ApiVersion("1", Deprecated = true)]
-    [ApiVersion("2")]
+    [ApiVersion("3")]
     [Route("api/[controller]")]
-    
-    public class WidgetsController : ControllerBase
+
+    public class WidgetsControllerV3 : ControllerBase
     {
         private IWidgetService _widgetService;
         private readonly IMapper _mapper;
@@ -30,7 +25,7 @@ namespace NetCoreApiVersioning.Controllers
         /// </summary>
         /// <param name="widgetService"></param>
         /// <param name="mapper"></param>
-        public WidgetsController(IWidgetService widgetService, IMapper mapper)
+        public WidgetsControllerV3(IWidgetService widgetService, IMapper mapper)
         {
             _widgetService = widgetService;
             _mapper = mapper;
@@ -42,7 +37,7 @@ namespace NetCoreApiVersioning.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_mapper.Map<IEnumerable<Widget>, List<WidgetGetDto>>(_widgetService.Get()));
+            return Ok(_mapper.Map<IEnumerable<Widget>, List<WidgetGetDtoV3>>(_widgetService.Get()));
         }
 
         /// <summary>
@@ -58,7 +53,7 @@ namespace NetCoreApiVersioning.Controllers
             {
                 return NotFound();
             }
-            return Ok(_mapper.Map<Widget, WidgetGetDto>(widget));
+            return Ok(_mapper.Map<Widget, WidgetGetDtoV3>(widget));
         }
 
         /// <summary>
@@ -67,14 +62,14 @@ namespace NetCoreApiVersioning.Controllers
         /// <param name="widgetPostDto"></param>
         /// <returns></returns>
         [HttpPost]
-        public IActionResult Post([FromBody] WidgetPostDto widgetPostDto)
+        public IActionResult Post([FromBody] WidgetPostDtoV3 widgetPostDto)
         {
-            var widgetOrError = _widgetService.Add(widgetPostDto.WidgetName, widgetPostDto.Price);
+            var widgetOrError = _widgetService.Add(widgetPostDto.Name, widgetPostDto.Price);
             if (widgetOrError.IsFailure)
             {
                 return BadRequest(widgetOrError.Error);
             }
-            var widgetDto = _mapper.Map<Widget, WidgetGetDto>(widgetOrError.Value);
+            var widgetDto = _mapper.Map<Widget, WidgetGetDtoV3>(widgetOrError.Value);
             return CreatedAtRoute(nameof(Get), new { id = widgetOrError.Value.Id }, widgetDto);
 
         }
@@ -98,7 +93,7 @@ namespace NetCoreApiVersioning.Controllers
         {
         }
     }
-    }
+}
 
 
 

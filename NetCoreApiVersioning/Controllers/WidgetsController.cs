@@ -7,7 +7,10 @@ using System.Linq;
 
 namespace NetCoreApiVersioning.Controllers
 {
-    [Route("[controller]")]
+    //Multiple ApiVersion attributes can be present to indicate no changes to this controller between versions.
+    [ApiVersion("1")]
+   // [ApiVersion("2")]
+    [Route("api/[controller]")]
     [ApiController]
     public class WidgetsController : ControllerBase
     {
